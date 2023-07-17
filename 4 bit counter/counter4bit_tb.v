@@ -3,6 +3,7 @@ module FourBitCounter_TB;
   reg clk;
   reg reset;
   wire [3:0] count;
+  reg  [3:0]Test_count;
   
   FourBitCounter dut (
     .clk(clk),
@@ -11,103 +12,26 @@ module FourBitCounter_TB;
   );
   
   initial begin  // Clock generation
+  Test_count=0;
    clk = 0;
    forever #5 clk = ~clk;
 end
 
+
   initial begin
-    reset = 1;//counter =0
+    #2 reset = 1;//counter =0
     
-    #10 reset = 0;  
-    $display("Count: %b", count);
+    #1 reset = 0;  
     
-    #10;
-    $display("Count: %b", count);
+     #40 reset = 1;// Reset output after 112 times
+      #1 reset = 0;
+      #160 // more 16 steps to see full function without reset interrupt
     
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    
-     $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    
-     $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    
-     $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    
-    reset=1;
-     $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    reset=0;
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    
-     $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
-    $display("Count: %b", count);
-    
-    #10;
     $finish;
   end
+  
+  initial begin
+ $monitor("t=%3d|  reset=%1b  | count=%2d \n", $time, reset,count );
+  end
+  
 endmodule
-
