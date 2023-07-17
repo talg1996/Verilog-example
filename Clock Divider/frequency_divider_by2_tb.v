@@ -2,22 +2,24 @@ module frequency_divider_by2_tb;
 output reg clk;
 output reg rst;
 input wire out_clk;
-frequency_divider_by2 utt(clk,rst,out_clk);
+
+frequency_divider_by2 dut (
+  .clk(clk),
+  .rst(rst),
+  .out_clk(out_clk)
+);
 initial
-clk = 1'b0;
+clk = 1'b0; //Init clk to 0
 always
-#10 clk = ~clk;
+#10 clk = ~clk; //T=20
+
 initial
 begin
-$monitor($time,"clk = %b,rst = %b,out_clk = %b",clk,rst,out_clk);
+$monitor("time=%3d | clk = %b | rst = %b | out_clk = %b \n ",$time,clk,rst,out_clk);
 rst =0;
 #20 rst =1;
 #100 $finish;
 end
-initial
-begin
-     $dumpfile ("frequencydiv.vcd");
-     $dumpvars (0,frequencydiv);
-end
+
 endmodule
  
