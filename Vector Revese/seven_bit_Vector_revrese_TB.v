@@ -18,28 +18,28 @@ module seven_bit_Vector_revrese_TB;
     #10;
     $display("Test Case 1:");
     $display("in_vector = %b", in_vector);
-    $display("out_vector = %b", out_vector);
+    $display("out_vector = %b \n", out_vector);
     
     // Test Case 2
     in_vector = 8'b11110000;
     #10;
     $display("Test Case 2:");
     $display("in_vector = %b", in_vector);
-    $display("out_vector = %b", out_vector);
+    $display("out_vector = %b\n", out_vector);
     
     // Test Case 3
     in_vector = 8'b00001111;
     #10;
     $display("Test Case 3:");
     $display("in_vector = %b", in_vector);
-    $display("out_vector = %b", out_vector);
+    $display("out_vector = %b\n", out_vector);
     
     // Test Case 4
     in_vector = 8'b11001100;
     #10;
     $display("Test Case 4:");
     $display("in_vector = %b", in_vector);
-    $display("out_vector = %b", out_vector);
+    $display("out_vector = %b\n", out_vector);
     
     $finish;
   end
